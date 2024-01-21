@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": "2",
+      "name": "Meeting with Team",
+      "description": "Schedule and conduct a team meeting to discuss project requirements and assign tasks."
+    },
+    {
+      "id": "3",
+      "name": "Research Technologies",
+      "description": "Conduct research on relevant technologies for the project and compile a summary."
+    },
+    {
+      "id": "4",
+      "name": "Code Refactoring",
+      "description": "Review and refactor existing codebase for better maintainability and efficiency."
+    },
+    {
+      "name": "Testing Phase",
+      "description": "test 123",
+      "id": "5"
+    }
+  ]
+}
