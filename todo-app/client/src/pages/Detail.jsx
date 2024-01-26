@@ -15,13 +15,11 @@ function Detail() {
   return (
     <div>
       <h1>Detail Page</h1>
-      {todo ? (
+      {todo && (
         <>
           <h2>{todo.name}</h2>
           <p>{todo.description}</p>
         </>
-      ) : (
-        <></>
       )}
     </div>
   );
