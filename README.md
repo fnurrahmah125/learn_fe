@@ -1,8 +1,4 @@
-# Redux
+# List of Contents
 
-## Key concept:
-
-- store
-- reducers
-- useSelector
-- useDispatch
+- Redux
+- Next.js
