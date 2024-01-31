@@ -1,0 +1,14 @@
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+
+body {
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
