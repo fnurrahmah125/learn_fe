@@ -1,0 +1,11 @@
+body {
+  font-family: sans-serif;
+  background: #242424;
+  color: white;
+
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
