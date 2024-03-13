@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read JSON File into HTML</title>
+  </head>
+  <body>
+    <!-- source: https://www.youtube.com/watch?v=Oage6H4GX2o&list=PLK5U0tyd34tBsRqm-ki81vtlioGv9j7Ky&index=7&pp=iAQB -->
+
+    <h1>List of post titles:</h1>
+    <ul></ul>
+
+    <script>
+      const listEl = document.querySelector("ul");
+
+      fetch("./data.json")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          data.forEach((post) => {
+            listEl.insertAdjacentHTML(
+              "beforeend",
+              `
+                <li>${post.title}</li>`
+            );
+          });
+        })
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+</html>

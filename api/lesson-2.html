@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API with Async/Await</title>
+    <style>
+      .wrapper {
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+      }
+      .btn {
+        border: none;
+        padding: 1rem 1.5rem;
+        font-size: 1.5rem;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+      }
+      .btn-get {
+        background: #27ae60;
+      }
+      .btn-edit {
+        background: #f39c12;
+      }
+      .btn-delete {
+        background: #e74c3c;
+      }
+      .btn-submit {
+        background: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- source: https://www.youtube.com/watch?v=3yi0yvHgPfQ&list=PLK5U0tyd34tBsRqm-ki81vtlioGv9j7Ky&index=2&pp=iAQB -->
+
+    <div class="wrapper">
+      <button class="btn btn-get">Get Users</button>
+      <button class="btn btn-edit">Edit User</button>
+      <button class="btn btn-delete">Delete User</button>
+      <button class="btn btn-submit">Submit User</button>
+    </div>
+
+    <script>
+      const btnGet = document.querySelector(".btn-get");
+      const btnEdit = document.querySelector(".btn-edit");
+      const btnDelete = document.querySelector(".btn-delete");
+      const btnSubmit = document.querySelector(".btn-submit");
+
+      const newUser = {
+        name: "John",
+        job: "Carpenter",
+      };
+
+      // 👉 GET
+      const getHandler = async () => {
+        try {
+          const res = await fetch("https://reqres.in/api/users");
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log(data.description);
+            return;
+          }
+
+          console.log(data.data[4]);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      // 👉 POST
+      const submitHandler = async () => {
+        try {
+          const res = await fetch("https://reqres.in/api/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          });
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log(data.description);
+            return;
+          }
+
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      // 👉 PUT
+      const editHandler = async () => {
+        try {
+          const res = await fetch("https://reqres.in/api/users/33", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          });
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log(data.description);
+            return;
+          }
+
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      // 👉 DELETE
+      const deleteHandler = async () => {
+        try {
+          const res = await fetch("https://reqres.in/api/users/545", {
+            method: "DELETE",
+          });
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log(data.description);
+            return;
+          }
+
+          console.log(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      btnGet.addEventListener("click", getHandler);
+      btnEdit.addEventListener("click", editHandler);
+      btnDelete.addEventListener("click", deleteHandler);
+      btnSubmit.addEventListener("click", submitHandler);
+    </script>
+  </body>
+</html>

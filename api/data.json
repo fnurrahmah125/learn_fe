@@ -1,0 +1,44 @@
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "Introduction to Dummy Data",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod ligula ut turpis dapibus, vel viverra ex eleifend."
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "title": "Exploring JSON Structures",
+    "body": "Duis nec tellus vitae erat tincidunt interdum a sit amet quam. Nunc ut eros ac quam tristique bibendum."
+  },
+  {
+    "userId": 3,
+    "id": 3,
+    "title": "Web Development Basics",
+    "body": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer ut libero vel metus luctus sagittis."
+  },
+  {
+    "userId": 4,
+    "id": 4,
+    "title": "Data Science Fundamentals",
+    "body": "Aenean varius, augue in dignissim hendrerit, massa justo pellentesque nisi, eu scelerisque lacus ex vel neque."
+  },
+  {
+    "userId": 5,
+    "id": 5,
+    "title": "Machine Learning Concepts",
+    "body": "Vivamus euismod mauris eu nisl laoreet, nec gravida lacus dignissim. Integer non risus vitae lectus fermentum mattis."
+  },
+  {
+    "userId": 6,
+    "id": 6,
+    "title": "Understanding APIs",
+    "body": "Quisque congue, felis vitae efficitur ullamcorper, sapien velit vestibulum metus, vel hendrerit orci elit eget arcu."
+  },
+  {
+    "userId": 7,
+    "id": 7,
+    "title": "Cybersecurity Best Practices",
+    "body": "Curabitur accumsan, nisi eu tempus luctus, felis quam venenatis quam, ac fringilla ex dui vel ex. In hac habitasse platea dictumst."
+  }
+]

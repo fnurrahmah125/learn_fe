@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+  </head>
+  <body>
+    <!-- https://www.youtube.com/watch?v=4o2QimWwPZU&list=PLK5U0tyd34tBsRqm-ki81vtlioGv9j7Ky&index=3&pp=iAQB -->
+
+    <script>
+      // 1) Create a promise
+      const p = new Promise((resolve, reject) => {
+        const numberOfCustomers = 10;
+
+        if (numberOfCustomers > 5) {
+          resolve("Success"); // 👉 fulfilled with value
+        } else {
+          reject("Not enough promotion"); // 👉 failure with reason
+        }
+      });
+
+      const z = new Promise((resolve, reject) => {
+        const numberOfCustomers = 5;
+
+        if (numberOfCustomers > 5) {
+          resolve("Success");
+        } else {
+          reject("Not enough promotion");
+        }
+      });
+
+      // 2) Consume a promise with .then() & .catch()
+      p.then((value) => {
+        console.log(value);
+      }).catch((reason) => {
+        console.log(reason);
+      });
+
+      // 3) Consume a promise with async/await & try/catch
+      const checkResult = async () => {
+        try {
+          const value = await z;
+          console.log(value);
+        } catch (reason) {
+          console.log(reason);
+        }
+      };
+
+      checkResult();
+
+      // 4) Why & where use promises in web development
+      // 👉 Vast majority of your code is synchronous
+      const a = 1;
+      const b = 2;
+      const c = 3;
+
+      // 📌 However, some operations may take a long time. We want to use asynchronous code for them so they don't freeze our program for so long. Asynchronous code was commonly implemented with callback functions, but now increasingly with promises.
+
+      // 📌 Most common examples of using promises in web development:
+      // - On frontend: Network requests (e.g. Fetch API or Axios library)
+      // - On backend: Interacting with file system (e.g. reading a file)
+
+      // 5) Fetch API (most common example of promises)
+      console.log(fetch("https://reqres.in/api/users")); // 👉 return a promise
+
+      fetch("https://reqres.in/api/users")
+        .then((res) => {
+          if (!res.ok) {
+            return Promise.reject("4xx or 5xx problem");
+          }
+
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data.data[2].email);
+        })
+        .catch((error) => console.log(error));
+
+      // 6) Promise.all / Promise.any
+      const fetchData1 = fetch("https://reqres.in/api/users/1")
+        .then((res) => {
+          if (!res.ok) {
+            console.log("Problem");
+            return;
+          }
+
+          return res.json();
+        })
+        .catch((err) => console.log(err));
+
+      const fetchData2 = fetch("https://reqres.in/api/users/2")
+        .then((res) => {
+          if (!res.ok) {
+            console.log("Problem");
+            return;
+          }
+
+          return res.json();
+        })
+        .catch((err) => console.log(err));
+
+      // 👉 Promise.all
+      Promise.all([fetchData1, fetchData2]).then((res) => {
+        console.log(res); // 👉 return all responses
+      });
+
+      // 👉 Promise.any
+      Promise.any([fetchData1, fetchData2]).then(
+        (res) => console.log("Promise.any: " + res.data.id) // 👉 return one response
+      );
+    </script>
+  </body>
+</html>

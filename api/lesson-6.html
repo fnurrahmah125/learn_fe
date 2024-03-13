@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Form Data as JSON</title>
+  </head>
+  <body>
+    <!-- source: https://www.youtube.com/watch?v=DqyJFV7QJqc&list=PLK5U0tyd34tBsRqm-ki81vtlioGv9j7Ky&index=6&pp=iAQB -->
+
+    <form class="form">
+      <input type="text" name="username" placeholder="username" />
+      <input type="password" name="password" placeholder="password" />
+      <input type="checkbox" name="termsconditions" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      const formEl = document.querySelector(".form");
+
+      formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(formEl);
+        const data = Object.fromEntries(formData);
+
+        fetch("https://reqres.in/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>

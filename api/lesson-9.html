@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios: GET, POST, PUT, DELETE</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- source: https://www.youtube.com/watch?v=LGftaora8vM&list=PLK5U0tyd34tCRECkGCCHPIgEMbvarCVuZ&index=1&pp=iAQB -->
+
+    <script>
+      // 👉 GET
+      axios
+        .get("https://jsonplaceholder.typicode.com/users")
+        .then((res) => {
+          console.log(">>> GET");
+          console.log(res.data);
+        })
+        .catch((err) => console.log(er));
+
+      // 👉 POST
+      const newUser1 = {
+        name: "Maria",
+        customer: true,
+      };
+
+      axios
+        .post("https://jsonplaceholder.typicode.com/users", newUser1)
+        .then((res) => {
+          console.log(">>> POST");
+          console.log(res.data);
+        })
+        .catch((err) => console.log(er));
+
+      // 👉 PUT
+      const newUser2 = {
+        name: "John",
+        customer: true,
+      };
+
+      axios
+        .put("https://jsonplaceholder.typicode.com/users/1", newUser2)
+        .then((res) => {
+          console.log(">>> PUT");
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+
+      // 👉 DELETE
+      axios
+        .delete("https://jsonplaceholder.typicode.com/users/1", newUser2)
+        .then((res) => {
+          console.log(">>> DELETE");
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+</html>
